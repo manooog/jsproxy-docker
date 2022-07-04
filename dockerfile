@@ -1,4 +1,4 @@
-FROM gcc:4.9 as builder
+FROM gcc as builder
 
 RUN apt-get update && apt-get install -y git
 
