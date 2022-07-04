@@ -40,7 +40,7 @@ FROM alpine as prod
 
 COPY --from=builder /home/jsproxy /home/jsproxy
 
-RUN addgroup -S nobody && adduser -S jsproxy -G nobody
+# RUN addgroup -S nobody && adduser -S jsproxy -G nobody
 
 EXPOSE 8443
 EXPOSE 8080
