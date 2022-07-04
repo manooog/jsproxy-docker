@@ -6,7 +6,7 @@ RUN groupadd nobody && \
     useradd jsproxy -g nobody --create-home
 
 USER jsproxy
-WORKDIR /home/jsproxy 
+WORKDIR /home/jsproxy
 
 RUN cd $(mktemp -d) && \
     curl -k -O https://www.openssl.org/source/openssl-1.1.1b.tar.gz && \
@@ -36,11 +36,15 @@ RUN git clone --depth=1 https://github.com/EtherDream/jsproxy.git server && \
     git clone -b gh-pages --depth=1 https://github.com/EtherDream/jsproxy.git www
 
 
-FROM alpine as prod
+FROM ubuntu as prod
 
 COPY --from=builder /home/jsproxy /home/jsproxy
 
-# RUN addgroup -S nobody && adduser -S jsproxy -G nobody
+RUN groupadd nobody && \
+    useradd jsproxy -g nobody --create-home
+
+USER jsproxy
+WORKDIR /home/jsproxy
 
 EXPOSE 8443
 EXPOSE 8080
