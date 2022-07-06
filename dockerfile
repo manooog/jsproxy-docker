@@ -38,12 +38,13 @@ RUN git clone --depth=1 https://github.com/EtherDream/jsproxy.git server && \
 
 FROM ubuntu as prod
 
-COPY --from=builder /home/jsproxy /home/jsproxy
-
 RUN groupadd nobody && \
     useradd jsproxy -g nobody --create-home
 
 USER jsproxy
+
+COPY --from=builder /home/jsproxy /home/jsproxy
+
 WORKDIR /home/jsproxy
 
 EXPOSE 8443
