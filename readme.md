@@ -38,6 +38,8 @@ docker run -d  -p 8080:8080 --name jsproxy  rxh1212/jsproxy
 
 **http://localhost:8080**
 
+> ⚠️：是否可以访问 google.com 等网站，决定于运行 jsproxy 的机器网络是否支持那些网站。jsproxy 本身不带 fq 能力哈～
+
 ![](./localhost.png)
 
 ![](./localhost-google.png)
