@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  openresty:
+    image: openresty/openresty:1.21.4.1-alpine
+    restart: unless-stopped
+    volumes:
+      - ./openresty/conf.d:/etc/nginx/conf.d
+      - ./openresty/certs:/certs
+      - ./openresty/logs:/var/logs
+    ports:
+      - "443:443" 
+  jsproxy:
+    image: rxh1212/jsproxy
+    restart: unless-stopped
